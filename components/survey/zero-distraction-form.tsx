@@ -377,6 +377,10 @@ export function ZeroDistractionForm({ accentColor, serviceAreas, disqualifiedPro
         lead_score_breakdown: score.breakdown,
 
         event_id: eventID,
+        // Dedup key for GoFunnel's server-side CAPI Lead — must match the
+        // browser pixel's eventID so Meta dedupes the two fires.
+        meta_event_id: eventID,
+        meta_event_name: qualified ? "Lead" : "LeadLowIntent",
         qualified,
 
         utm_source:   tracking.utm_source   ?? "",
